@@ -119,7 +119,7 @@ fact = Web3.solidityKeccak(['uint256', 'bytes32'],[program_hash, output_hash])
 ```
 
 Ya que el resultado esté disponilbe en Goerli lo podemos verificar 
-(aqui)[https://goerli.etherscan.io/address/0xAB43bA48c9edF4C2C4bB01237348D1D7B28ef168#readProxyContract]
+[aqui](https://goerli.etherscan.io/address/0xAB43bA48c9edF4C2C4bB01237348D1D7B28ef168#readProxyContract)
 
 Noten que lo requerido para calcular el `Fact` es el output, no el input. En este caso coinciden pero 
 veamos un ejemplo en donde no sea así
