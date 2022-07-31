@@ -43,11 +43,11 @@ Entonces nuestro archivo `json` con el input debería de cambiar a `{"x_input": 
 
 ### Verificando que el programa funciona
 
-Si el código anterior lo guardamos en un archivo `sqrt25.cairo` entonces lo compilamos así
-`cairo-compile sqrt25.cairo --output sqrt25.json`
+Si el código anterior lo guardamos en un archivo `sqrt25.cairo` lo compilamos así
+```cairo-compile sqrt25.cairo --output sqrt25.json```
 
 Creamos un archivo `input.json` que simplemente contenga `{"x": 5}` y corremos el programa
-`cairo-run --program=sqrt25.json --print_output --layout=small --program_input=input.json`
+```cairo-run --program=sqrt25.json --print_output --layout=small --program_input=input.json```
 
 Deberíamos de ver en la pantalla algo como esto
 ```
@@ -65,27 +65,30 @@ An ASSERT_EQ instruction failed: 25 != 9.
 ```
 
 El programa falló lo cual es bueno ya que confirma que funciona como esperábamos (dado que 3 no es
-raíz cuadrada de 25
+raíz cuadrada de 25)
 
 
 ## Usando SHARP (Shared Prover)
 
 ### Hash del programa
-El programa que acabamos de escribir tiene un hash que se puede obtener con el comando
-`cairo-hash-program --program=sqrt25.json`
-
-Deberíamos obtener `0x39c4ead4bce418310a6df15cdaa331fc27d07ec813dc4d73c3dc14def32649b`
 
 Podemos pensar el hash como un ID único para cada programa.
+
+El programa que acabamos de escribir tiene un hash que se puede obtener con el comando
+```cairo-hash-program --program=sqrt25.json```
+
+Deberíamos obtener `0x39c4ead4bce418310a6df15cdaa331fc27d07ec813dc4d73c3dc14def32649b`
 
 ### Enviando el programa y la prueba a SHARP
 SHARP (Shared Prover) es un servicio que genera pruebas que aseguran la valides de la ejecución 
 de los programas escritos en cairo y que además manda esas prueba a una testnet de Ethereum (Goerli)
 donde pueden ser verificados por un smart contract. (Refinar esto)
 
+Para "subir" nuestro resultado de la ejecución de `sqrt25` on-chain hacemos en la terminal:
+
 `cairo-sharp submit --source sqrt25.cairo --program_input input.json`
 
-El resultado se verá así: 
+En la terminal veríamos algo parecido a esto: 
 ```
 Compiling...
 Running...
@@ -95,12 +98,12 @@ Job key: 59896d17-19c6-4e77-ba19-4f703156f218
 Fact: 0x4d3420edf3a438ee8dc29fc5c86297791b31aaf2480d8fa9cf54279122e65bf
 ```
 
-`Job key` nos sirve para monitorear si es que la prueba ya está disponible en Ethereum
-`cairo-sharp status 59896d17-19c6-4e77-ba19-4f703156f218`
+`Job key` nos sirve para monitorear si es que la prueba ya está disponible en Ethereum corriendo el comando
+```cairo-sharp status 59896d17-19c6-4e77-ba19-4f703156f218```
 
 ### #FACTS
 `Fact` es el resultado de hashear el hash del programa (`0x39c4ead4bce418310a6df15cdaa331fc27d07ec813dc4d73c3dc14def32649b` 
-en este caso) y el `output` que ahora es `5`
+en este caso) y el `output` que este mismo produce (en este ejemplo es `5`)
 
 El fact lo podemos calcular con el siguiente código de python
 
@@ -119,10 +122,10 @@ fact = Web3.solidityKeccak(['uint256', 'bytes32'],[program_hash, output_hash])
 ```
 
 Ya que el resultado esté disponilbe en Goerli lo podemos verificar 
-[aqui](https://goerli.etherscan.io/address/0xAB43bA48c9edF4C2C4bB01237348D1D7B28ef168#readProxyContract)
+[aqui](https://goerli.etherscan.io/address/0xAB43bA48c9edF4C2C4bB01237348D1D7B28ef168#readProxyContract).
 
 Noten que lo requerido para calcular el `Fact` es el output, no el input. En este caso coinciden pero 
-veamos un ejemplo en donde no sea así
+veamos un ejemplo en donde no sea así.
 
 
 ## Examen de álgebra
@@ -221,7 +224,7 @@ cairo-hash-program --program=examen.json
 0x6d05ac3baea03c9af7a6358e92485a83f92d7d1e4addf22a7fccf64bd3ead30
 ```
 
-Una de las dos soluciones que logra correr el programa satisfactoriamente es si 
+Una de las dos soluciones que logra correr el programa satisfactoriamente es
 `x = 5`, supongamos que el alumno con número de lista es `9` crea `input.json` así:
 `{"x": 5, "list_num": 9}`.
 
@@ -256,7 +259,7 @@ Notemos que no es necesario saber que valor de `x` utilizó, simplemente su núm
 ### Evitando fraude
 
 Con este "examen" solo necesitamos saber los números de lista de cada estudiante para verificar si
-lograron o no aprovar el examen. ¿Qué pasa si uno de ellos intenta hacer trampa modificando el programa? 
+lograron o no aprobar el examen. ¿Qué pasa si uno de ellos intenta hacer trampa modificando el programa? 
 
 Alguno de los estudiantes, sabiendo que el programa en cairo solo tiene como output su número de lista, puede
 intentar modificar el programa de la siguiente manera: 
@@ -283,9 +286,10 @@ func main{output_ptr : felt*,}():
         
     %}
 
-    # No more assertion
+    # No assertion
 
-    # Now we return the alumn's list number instead of the result
+    # Just return the alumn's list number
+    # Nothing is actually chekced for
     serialize_word(list_num)
     return()
 end
