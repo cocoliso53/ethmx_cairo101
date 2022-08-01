@@ -2,6 +2,9 @@
 
 ## Raiz Cuadrada de 25
 
+Consideremos el siguiente programa que verifica in input de un usuario
+sea raíz cuadrada de 25
+
 ``` cairo
 %builtins output
 
@@ -67,6 +70,9 @@ An ASSERT_EQ instruction failed: 25 != 9.
 El programa falló lo cual es bueno ya que confirma que funciona como esperábamos (dado que 3 no es
 raíz cuadrada de 25)
 
+### Ejercicio
+hints_input.cairo 
+
 
 ## Usando SHARP (Shared Prover)
 
@@ -79,6 +85,7 @@ El programa que acabamos de escribir tiene un hash que se puede obtener con el c
 
 Deberíamos obtener `0x39c4ead4bce418310a6df15cdaa331fc27d07ec813dc4d73c3dc14def32649b`
 
+
 ### Enviando el programa y la prueba a SHARP
 SHARP (Shared Prover) es un servicio que genera pruebas que aseguran la valides de la ejecución 
 de los programas escritos en cairo y que además manda esas prueba a una testnet de Ethereum (Goerli)
@@ -89,6 +96,7 @@ Para "subir" nuestro resultado de la ejecución de `sqrt25` on-chain hacemos en 
 `cairo-sharp submit --source sqrt25.cairo --program_input input.json`
 
 En la terminal veríamos algo parecido a esto: 
+
 ```
 Compiling...
 Running...
@@ -118,6 +126,7 @@ program_output = [5]
 output_hash = Web3.solidityKeccak(['uint256[]'], [program_output])
 fact = Web3.solidityKeccak(['uint256', 'bytes32'],[program_hash, output_hash])
 
+print(fact.hex())
 # Result will be 0x4d3420edf3a438ee8dc29fc5c86297791b31aaf2480d8fa9cf54279122e65bf
 ```
 

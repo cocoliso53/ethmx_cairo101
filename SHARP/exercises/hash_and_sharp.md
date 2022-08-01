@@ -16,7 +16,7 @@ Toma nota del hash para que no se te olvide
 ### Cambiando el hint
 
 Ahora hagamos una pequeña modificación en el hint. Verifiquemos ahí
-mismo que el la multiplicación de a y b es 60. Para ello simplemente 
+mismo que el la multiplicación de `a` y `b` es 60. Para ello simplemente 
 se agrega una línea 
 ``` cairo
 %{
@@ -40,7 +40,7 @@ Ahora:
 ### Cambiando el código en Cairo
 
 En el programa tal cual lo tenemos ahora estamos checando dos veces 
-que a por b sea 60 (en el hint y afuera de el). 
+que `a` por `b` sea 60 (en el hint y afuera de el). 
 
 Vamos a hacer otra prueba sencilla y ahora vamos a borrar la linea
 `assert r = 60` en el código de cairo. 
@@ -91,7 +91,11 @@ program_output = [INPUT_a, INPUT_b]
 output_hash = Web3.solidityKeccak(['uint256[]'], [program_output])
 fact = Web3.solidityKeccak(['uint256', 'bytes32'],[program_hash, output_hash])
 
+print(fact.hex())
+
 ```
+
+Salva el código y córrelo con el comando `python3 fact_calculator.py`
 
 Después de correr el programa el `fact` resultante debería de ser el mismo que obtuviste 
 al momento de usar SHARP. 

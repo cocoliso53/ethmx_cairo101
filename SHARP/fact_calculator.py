@@ -6,3 +6,4 @@ program_output = [5]
 
 output_hash = Web3.solidityKeccak(['uint256[]'], [program_output])
 fact = Web3.solidityKeccak(['uint256', 'bytes32'],[program_hash, output_hash])
+print(fact.hex())
