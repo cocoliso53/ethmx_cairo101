@@ -27,6 +27,7 @@ se agrega una línea
     # Agrega esta linea
     assert a*b == 60
 %}
+```
 
 Ahora: 
 - Guarda los cambios
