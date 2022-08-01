@@ -8,7 +8,7 @@ func main{output_ptr : felt*,}():
    # Variable name inside of cairo program
     local x: felt
     %{
-        # Assign input json input x
+        # Assign input json x
         # to cairo variable x
         ids.x = program_input['x']
     %}

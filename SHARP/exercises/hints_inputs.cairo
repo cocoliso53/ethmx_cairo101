@@ -4,12 +4,26 @@ from starkware.cairo.common.serialize import serialize_word
 
 ## ---  Intrucciones --- ##
 ## Completa el codigo para que el programa:
+##
 ## Tenga tres variables: a,b y r (r ya esta)
+##
 ## Usando un input (json) asigna el valor de a y b
-## defina el valor de r como la multiplicacion de
-## a con b, y ademas que su valor sea 120
-## por ultimo, crea un archivo input.json
+## define el valor de r como la multiplicacion de
+## a con b, y ademas que su valor sea 60
+## 
+## Compila el programa
+##
+## Crea un archivo input.json 
 ## que funcione al correr el programa
+##
+## Corre el programa y verifica que salga bien
+##
+## Compilar:
+## cairo-compile PROGRAMA.cairo --output PROGRAMA.json
+## (cambia PROGRAMA por el nombre que quieras)
+##
+## Correr programa: 
+## cairo-run --program=PROGRAMA.json --print_output --layout=small --program_input=input.json
 
 
 func main{output_ptr : felt*,}():
