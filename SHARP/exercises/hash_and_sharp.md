@@ -64,7 +64,8 @@ Con un archivo `json` con el cual el programa se ejecute correctamente corre el 
 cairo-sharp submit --source NOMBRE_PROGRAMA.cairo --program_input input.json
 ```
 
-Toma nota del `Job key` y del `Fact`
+Toma nota del `Job key` y del `Fact`, el `Job key` nos sirve para ver el progreso de "subir"
+nuestro fact a SHARP. Lo podemos hacer de la siguiente manera:
 
 ```cairo-sharp status JOB-KEY```
 

@@ -62,7 +62,7 @@ func main{output_ptr : felt*,}():
     assert r = 
 
 
-    # Ahora usa asser para validar que
+    # Ahora usa assert para validar
     # que r es 60
     assert r = 
 
