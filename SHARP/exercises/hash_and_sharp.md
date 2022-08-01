@@ -53,7 +53,7 @@ Una vez más haz lo siguiente:
 ¿Qué notas de diferente con respecto a la vez pasada?
 ¿Qué afecta y qué no afecta el hash del programa? 
 
-## SHARP
+## SHARP
 
 Volvamos a usar el código como lo teníamos antes del ejercicio anterior (con el `assert` en el codigo de
 cairo pero no en el hint). 
