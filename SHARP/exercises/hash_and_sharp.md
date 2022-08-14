@@ -1,7 +1,7 @@
 # Ejercicios 
 
 Para esta parte vamos a jugar un poco con la solución 
-del ejercicio anterior que escribiste
+del ejercicio anterior.
 
 ## Hashes del programa
 
@@ -36,14 +36,13 @@ Ahora:
 
 ¿Qué notas? 
 
-
 ### Cambiando el código en Cairo
 
 En el programa tal cual lo tenemos ahora estamos checando dos veces 
 que `a` por `b` sea 60 (en el hint y afuera de el). 
 
 Vamos a hacer otra prueba sencilla y ahora vamos a borrar la linea
-`assert r = 60` en el código de cairo. 
+`assert r = 60` en el código de cairo, en el hint se queda. 
 
 Una vez más haz lo siguiente: 
 - Guarda los cambios
@@ -58,7 +57,7 @@ Una vez más haz lo siguiente:
 Volvamos a usar el código como lo teníamos antes del ejercicio anterior (con el `assert` en el codigo de
 cairo pero no en el hint). 
 
-Con un archivo `json` con el cual el programa se ejecute correctamente corre el siguiente comando
+Usando un archivo `json` con el cual el programa se ejecute correctamente corre el siguiente comando
 
 ``` cairo
 cairo-sharp submit --source NOMBRE_PROGRAMA.cairo --program_input input.json
@@ -75,7 +74,7 @@ copia el `Fact` que te salió en el paso anterior y pégalo en `5. isValid` en e
 ## Facts
 
 Vamos a cambiar un poco de ambiente para usar python con la librería web3. Copia el código que está en el archivo `fact_calculator.py` y 
-asegurate de tener a la mano el hash del programa con el cual usaste SHARP y los dos números de tu archivo `input.json`
+asegúrate de tener a la mano el hash del programa con el cual usaste SHARP y los dos números de tu archivo `input.json`
 
 Ahora has los siguientes cambios en el código: 
 ``` python

@@ -2,7 +2,7 @@
 
 ## Raiz Cuadrada de 25
 
-Consideremos el siguiente programa que verifica in input de un usuario
+Consideremos el siguiente programa que verifica un input de un usuario
 sea raíz cuadrada de 25
 
 ``` cairo

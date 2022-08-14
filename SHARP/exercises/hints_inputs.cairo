@@ -5,11 +5,14 @@ from starkware.cairo.common.serialize import serialize_word
 ## ---  Intrucciones --- ##
 ## Completa el codigo para que el programa:
 ##
-## Tenga tres variables: a,b y r (r ya esta)
+## 1) Tenga tres variables: a,b y r (r ya esta)
 ##
-## Usando un input (json) asigna el valor de a y b
-## define el valor de r como la multiplicacion de
+## 2) Usando un input (json) asigna el valor de a y b
+## 
+## 3) Defina el valor de r como la multiplicacion de
 ## a con b, y ademas que su valor sea 60
+## 
+## Despues:
 ## 
 ## Compila el programa
 ##
@@ -18,17 +21,20 @@ from starkware.cairo.common.serialize import serialize_word
 ##
 ## Corre el programa y verifica que salga bien
 ##
-## Compilar:
+##  Para ompilar:
 ## cairo-compile PROGRAMA.cairo --output PROGRAMA.json
 ## (cambia PROGRAMA por el nombre que quieras)
 ##
-## Correr programa: 
+## Para correr programa: 
 ## cairo-run --program=PROGRAMA.json --print_output --layout=small --program_input=input.json
 
 
 func main{output_ptr : felt*,}():
 
     alloc_locals
+    
+    # Definimos r
+    local r: felt
 
     # Crea dos variables locales
     # llamdas a y b de tipo felt
@@ -39,8 +45,6 @@ func main{output_ptr : felt*,}():
     # Completa la linea para crear b
     local
     
-    # Definimos tambien r
-    local r: felt
 
     # Ahora viene el hint
     # aqui se asignan los valores 
